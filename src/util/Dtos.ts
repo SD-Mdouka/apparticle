@@ -1,9 +1,9 @@
 export interface CreateArticleDteo {
     title:string;
-    body:string;
+    description:string;
 }
 
 export interface UpdateArticleDteo {
     title:string;
-    body:string;
+    description:string;
 }
