@@ -11,8 +11,7 @@ import { RegisterDteo } from "@/util/Dtos";
 import { createUsersSchema } from "@/util/validationShemas";
 import { NextRequest, NextResponse } from "next/server";
 import bcrypt from 'bcryptjs'
-import { JWTPayload } from "@/util/type";
-import { generateJWT } from "@/util/generateToken";
+import { setCookie } from "@/util/generateToken";
 
 export async function POST(request: NextRequest) {
     try {
@@ -46,14 +45,9 @@ export async function POST(request: NextRequest) {
         });
 
         //generate JWT
-        const jwtPayload:JWTPayload = { 
-            id : newUser.id, 
-            username: newUser.username,
-            isAdmin:newUser.isAdmin
-        }
-        //generate JWT token
-        const token = generateJWT(jwtPayload)
-        return NextResponse.json({...newUser,token}, { status: 200 })
+     const cookie = setCookie({ id : newUser.id, username: newUser.username,isAdmin:newUser.isAdmin})
+        return NextResponse.json({...newUser,message : 'Register && Authenticated'}, 
+            { status: 200 ,headers : { "Set-Cookie" : cookie}})
     } catch (error) {
         return NextResponse.json({ message : "internal server error"}, { status: 500 })
     }

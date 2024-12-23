@@ -17,3 +17,13 @@ export interface loginDteo {
     password : string;
     email : string;
 }
+export interface UpdateUserDteo{
+    username? :string;
+    password? : string;
+    email? : string;
+}
+
+export interface CreateCommentDteo {
+    text:string;
+    articleId:number;
+}

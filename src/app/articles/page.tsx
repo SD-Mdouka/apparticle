@@ -2,6 +2,7 @@
 import ArticleItem from '@/component/articles/ArticleItem';
 import Pagination from '@/component/articles/Pagination';
 import SearchArticleInput from '@/component/articles/SearchArticleInput';
+import { Article } from '@/util/type';
 import type { Metadata } from 'next';
 
 
