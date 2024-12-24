@@ -56,7 +56,7 @@ export async function GET(request: NextRequest) {
     try{
         const user = verifyToken(request);
         if(user === null || user.isAdmin === false){
-            return NextResponse.json({ message: "only logged in user ,access denied" }, { status: 401 });           
+            return NextResponse.json({ message: "only admin, access denied" }, { status: 401 });           
         }
         const comments = await prisma.comment.findMany();
     return NextResponse.json(comments, { status: 200 })

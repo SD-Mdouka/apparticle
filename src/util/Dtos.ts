@@ -27,3 +27,6 @@ export interface CreateCommentDteo {
     text:string;
     articleId:number;
 }
+export interface UpdateCommentDteo {
+    text:string;
+}
