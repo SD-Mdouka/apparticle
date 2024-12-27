@@ -1,5 +1,6 @@
 import AddCommentForm from "@/component/comments/AddCommentForm";
 import CommentItem from "@/component/comments/CommentItem";
+import { Article } from "@prisma/client";
 
 interface SingleArticlePageProps {
     params: { id: string }
@@ -7,7 +8,7 @@ interface SingleArticlePageProps {
 
 const SingleArticlePage = async ({ params }: SingleArticlePageProps) => {
 
-    const response = await fetch(`https://jsonplaceholder.typicode.com/posts/${params?.id}`);
+    const response = await fetch(`http://localhost:3000/api/articles?IdItem=${1}`);
   const article:Article = await response.json();
     if(!response.ok){
         throw new Error('Failed to fetch article')
@@ -20,7 +21,7 @@ const SingleArticlePage = async ({ params }: SingleArticlePageProps) => {
                     {article.title}
                 </h1>
                 <div className="text-gray-400">1/1/12</div>
-                <p className="text-gray-800 text-xl mt-5">{article.body}</p>
+                <p className="text-gray-800 text-xl mt-5">{article.description}</p>
             </div>
             <AddCommentForm />
             

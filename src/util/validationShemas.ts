@@ -28,3 +28,10 @@ export const createCommentSchema = z.object({
     text: z.string().min(2).max(500),
     articleId: z.number(),
 });
+// register shcema
+export const UpdateUsersSchema = z.object({
+
+    username: z.string().min(2).max(100).optional(),
+    email: z.string().min(10).max(200).email().optional(),
+    password: z.string().min(6).optional(),
+})
