@@ -3,12 +3,16 @@
 import Link from "next/link";
 import { useState } from "react";
 import { useRouter } from "next/navigation";
+import axios from "axios";
 import { toast } from "react-toastify";
+import { DOMAIN } from "@/util/Constant";
+import ButtonSpiner from "./ButtonSpiner";
 
 const SignUpForm = () => {
   const [username, setUserName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [loading, setLoading] = useState(false);
 
   const router = useRouter();
 
@@ -19,11 +23,15 @@ const SignUpForm = () => {
     if (password === "") return toast.warning("Password is required");
 
     try {
-
-      router.push('/')
+      setLoading(true);
+      await axios.post(`${DOMAIN}/api/users/register` , { email,password,username})
+      router.push("/");
+      setLoading(false);
+      toast.success('Successfully logged in')
       router.refresh();
-    } catch (error : any) {
-      toast.error(error?.response?.data.message);
+    } catch (error: any) {
+      toast.error(error?.response.data.message);
+      setLoading(false);
     }
   };
 
@@ -52,10 +60,11 @@ const SignUpForm = () => {
       />
       <div className="flex flex-col mb-5 gap-4">
         <button
+          disabled={loading}
           type="submit"
           className="text-2xl text-white bg-purple-600 hover:bg-purple-900 p-2 rounded-lg font-bold w-full"
         >
-            Register
+           {loading ? (<ButtonSpiner/>) : "Register"}
         </button>
        
       </div>
