@@ -2,12 +2,14 @@
 import React, { useState } from 'react';
 import { toast } from 'react-toastify';
 import { useRouter } from 'next/navigation';
+import axios from 'axios';
+import { DOMAIN } from '@/util/Constant';
 
 interface AddCommentFormProps {
     articleId: number;
 }
 
-const AddCommentForm = () => {
+const AddCommentForm = ({ articleId } : AddCommentFormProps) => {
     const router = useRouter();
     const [text, setText] = useState("");
 
@@ -16,6 +18,7 @@ const AddCommentForm = () => {
         if(text === "") return toast.error("Please write something");
         
         try {
+            await axios.post(`${DOMAIN}/api/comments`, { text,articleId})
             router.refresh();
             setText("");
         } catch (error:any) {
@@ -33,7 +36,7 @@ const AddCommentForm = () => {
              value={text}
              onChange={(e) => setText(e.target.value)}
             />
-            <button type="submit" className='bg-green-700 text-white mt-2 p-1 w-min text-xl rounded-lg hover:bg-green-900 transition'>
+            <button type="submit" style={{backgroundColor:"#15803d"}} className="bg-greenAr text-white mt-2 p-1 w-min text-xl rounded-lg hover:bg-green-900 transition">
                 Comment
             </button>
         </form>

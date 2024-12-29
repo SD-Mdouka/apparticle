@@ -22,3 +22,6 @@ body {
 button:disabled{
   cursor: not-allowed;
 }
+.bg-greenArt {
+  background-color: #15803d;
+}
