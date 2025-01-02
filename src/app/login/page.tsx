@@ -8,9 +8,6 @@ export const metadata: Metadata = {
 };
 
 const LoginPage = async () => {
-    const cookie = await cookies();
-    const token = cookie.get('jwtToken')?.value || "";
-    if(token) redirect('/');
   return (
     <section className="fix-height container m-auto px-7 flex items-center justify-center ">
       <div className="m-auto bg-slate-100 rounded-2xl p-7 w-full md:2/3">

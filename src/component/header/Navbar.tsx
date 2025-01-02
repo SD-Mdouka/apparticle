@@ -6,8 +6,11 @@ import { useState } from "react";
 import { AiOutlineMenu } from "react-icons/ai";
 import { IoMdClose } from "react-icons/io";
 
+interface NavbarProps {
+    isAdmin:boolean;
+}
 
-const Navbar = () => {
+const Navbar = ({isAdmin}:NavbarProps) => {
     const [toggle, setToggle] = useState(false);
 
     return (
@@ -36,7 +39,9 @@ const Navbar = () => {
                     href="/articles?pageNumber=1">
                     Articles</Link>
                     <Link onClick={() => setToggle(false)} className={styles.navLink} href="/about">About</Link>
+                    {isAdmin && (
                     <Link onClick={() => setToggle(false)} className={styles.navLink} href="/admin">Admin Dashboard</Link>
+                    )}
                 </ul>
             </div>
         </nav>

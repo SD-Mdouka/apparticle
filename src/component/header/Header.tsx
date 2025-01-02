@@ -13,7 +13,7 @@ const Header = async () => {
   const payload = verifyTokenForPage(token)
   return (
     <header className={styles.header}>
-      <Navbar />
+      <Navbar isAdmin={payload?.isAdmin || false} />
       <div className={styles.right}>
         {payload ?
           (

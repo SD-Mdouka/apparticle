@@ -4,7 +4,9 @@ import { Article } from "@prisma/client";
 
 //get Article by number page
 export async function getArticles(pageNumber:String | undefined):Promise<Article[]> {
-  const response = await fetch(`${DOMAIN}/api/articles?pageNumber=${pageNumber}`);
+  const response = await fetch(`${DOMAIN}/api/articles?pageNumber=${pageNumber}` , {
+    cache:"no-store"
+  });
 
   if(!response.ok){
     throw new Error('Failed to fetch article')
@@ -14,7 +16,9 @@ return response.json();
 // get count articles page
 
 export async function getArticlesCount():Promise<number> {
-  const response = await fetch(`${DOMAIN}/api/articles/count`);
+  const response = await fetch(`${DOMAIN}/api/articles/count` , {
+    cache:"no-store"
+  });
 
   if(!response.ok){
     throw new Error('Failed to fetch article')
