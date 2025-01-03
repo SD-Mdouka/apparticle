@@ -17,7 +17,7 @@ const DeleteArticleButton = ({articleId}:DeleteArticleProps) => {
               {
                 await axios.delete(`${DOMAIN}/api/articles/${articleId}`)
                 router.refresh();
-                toast.success('Successfully deleted');
+                toast.success('Article deleted');
               } 
             } catch (error: any) {
               toast.warning(error?.response?.data.message);
