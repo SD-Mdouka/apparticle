@@ -2,7 +2,6 @@
 
 import prisma from "@/util/db";
 import { UpdateUserDteo } from "@/util/Dtos";
-import { JWTPayload } from "@/util/type";
 import { UpdateUsersSchema } from "@/util/validationShemas";
 import { verifyToken } from "@/util/verifyToken";
 import bcrypt from 'bcryptjs';

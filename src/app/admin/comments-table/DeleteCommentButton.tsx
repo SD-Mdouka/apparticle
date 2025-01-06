@@ -19,8 +19,8 @@ const DeleteCommentButton = ({commentId}:DeleteCommentProps) => {
                 router.refresh();
                 toast.success('Comment deleted');
               } 
-            } catch (error: any) {
-              toast.warning(error?.response?.data.message);
+            } catch (error) {
+              toast.warning("Warning in server");
             }
     }
     return (

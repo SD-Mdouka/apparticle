@@ -24,9 +24,8 @@ const EditArticleForm = ({ article }:EditArticleProps) => {
             await axios.put(`${DOMAIN}/api/articles/${article.id}` , { title,description})
             toast.success("Updated article");
             router.refresh();
-        } catch (error:any) {
-            toast.error(error?.response?.data.message);
-            console.log(error);
+        } catch (error) {
+            toast.warning("warning in the Server");    
         }
     }
 

@@ -1,4 +1,4 @@
-import { redirect, useRouter } from 'next/navigation';
+import { redirect } from 'next/navigation';
 import { verifyTokenForPage } from '@/util/verifyToken';
 import { cookies } from 'next/headers';
 import { Comment } from '@prisma/client';
@@ -44,7 +44,6 @@ const AdminCommentTable = async () => {
             ))}
           </tbody>
         </table>
-        {/* <Pagination pages={pages} pageNumber={parseInt(pageNumber)} route={"/admin/articles-table"}/> */}
       </section>
     )
 }

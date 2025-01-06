@@ -19,9 +19,9 @@ const DeleteArticleButton = ({articleId}:DeleteArticleProps) => {
                 router.refresh();
                 toast.success('Article deleted');
               } 
-            } catch (error: any) {
-              toast.warning(error?.response?.data.message);
-            }
+            } catch (error) {
+              
+              toast.warning("warning in the Server");            }
     }
     return (
         <>

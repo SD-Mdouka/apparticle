@@ -3,7 +3,7 @@ import { SingleArticle } from "@/util/type";
 import { Article } from "@prisma/client";
 
 //get Article by number page
-export async function getArticles(pageNumber:String | undefined):Promise<Article[]> {
+export async function getArticles(pageNumber:string | undefined):Promise<Article[]> {
   const response = await fetch(`${DOMAIN}/api/articles?pageNumber=${pageNumber}` , {
     cache:"no-store"
   });
@@ -27,7 +27,7 @@ const {count} = await response.json() as { count:number};
 return count;
 } 
 //get Article by number page
-export async function getArticlesBasedOnSearch(searchText:String):Promise<Article[]> {
+export async function getArticlesBasedOnSearch(searchText:string):Promise<Article[]> {
   const response = await fetch(`${DOMAIN}/api/articles/search?searchText=${searchText}`);
 
   if(!response.ok){
@@ -36,7 +36,7 @@ export async function getArticlesBasedOnSearch(searchText:String):Promise<Articl
 return response.json();
 }
 //get Single Article
-export async function getSingleArticle(articleId:String):Promise<SingleArticle> {
+export async function getSingleArticle(articleId:string):Promise<SingleArticle> {
   const response = await fetch(`${DOMAIN}/api/articles/${articleId}` , {
     cache:"no-store"
   });

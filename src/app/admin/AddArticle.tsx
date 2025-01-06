@@ -21,8 +21,8 @@ const AddArticle = () => {
             setDescription("");
             toast.success("New article added");
             router.refresh();
-        } catch (error:any) {
-            toast.error(error?.response?.data.message);
+        } catch (error) {
+            toast.error("Error Server");
             console.log(error);
         }
     }

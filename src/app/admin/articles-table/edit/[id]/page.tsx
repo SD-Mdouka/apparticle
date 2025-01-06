@@ -1,6 +1,5 @@
 
 import { getSingleArticle } from "@/apiCals/apiArticleCall";
-import { DOMAIN } from "@/util/Constant";
 import { verifyTokenForPage } from "@/util/verifyToken";
 import { Article } from "@prisma/client";
 import { cookies } from "next/headers";
@@ -8,7 +7,7 @@ import { redirect } from "next/navigation";
 import EditArticleForm from "./EditArticleForm";
 
 interface EditArticlePagelProps {
-    params: { id: string }
+    params:{ id: string }
 }
 
 const EditArticlePage = async ({ params }: EditArticlePagelProps) => {
